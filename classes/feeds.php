@@ -856,7 +856,7 @@ class Feeds extends Handler_Protected {
 
 		/* bump login timestamp if needed */
 		if (time() - $_SESSION["last_login_update"] > 3600) {
-			$this->dbh->query("UPDATE ttrss_users SET last_login = NOW() WHERE id = " .
+			$this->dbh->query("UPDATE ttrss_users SET last_login = ".last_login_date()." WHERE id = " .
 				$_SESSION["uid"]);
 			$_SESSION["last_login_update"] = time();
 		}

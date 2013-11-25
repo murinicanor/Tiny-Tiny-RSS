@@ -219,7 +219,7 @@ class Pref_Users extends Handler_Protected {
 
 				$this->dbh->query("INSERT INTO ttrss_users
 					(login,pwd_hash,access_level,last_login,created, salt)
-					VALUES ('$login', '$pwd_hash', 0, null, NOW(), '$salt')");
+					VALUES ('$login', '$pwd_hash', 0, null, ".last_login_date().", '$salt')");
 
 
 				$result = $this->dbh->query("SELECT id FROM ttrss_users WHERE

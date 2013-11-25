@@ -1,5 +1,5 @@
 <?php
-	define_default('DAEMON_UPDATE_LOGIN_LIMIT', 30);
+	define_default('DAEMON_UPDATE_LOGIN_LIMIT', 32);
 	define_default('DAEMON_FEED_LIMIT', 500);
 	define_default('DAEMON_SLEEP_INTERVAL', 120);
 

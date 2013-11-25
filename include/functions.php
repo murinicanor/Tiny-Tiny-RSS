@@ -722,7 +722,7 @@
 				$_SESSION["access_level"] = db_fetch_result($result, 0, "access_level");
 				$_SESSION["csrf_token"] = sha1(uniqid(rand(), true));
 
-				db_query("UPDATE ttrss_users SET last_login = NOW() WHERE id = " .
+				db_query("UPDATE ttrss_users SET last_login = ".last_login_date()." WHERE id = " .
 					$_SESSION["uid"]);
 
 				$_SESSION["ip_address"] = $_SERVER["REMOTE_ADDR"];
@@ -845,7 +845,7 @@
 
 			} else {
 				/* bump login timestamp */
-				db_query("UPDATE ttrss_users SET last_login = NOW() WHERE id = " .
+				db_query("UPDATE ttrss_users SET last_login = ".last_login_date()." WHERE id = " .
 					$_SESSION["uid"]);
 				$_SESSION["last_login_update"] = time();
 			}
@@ -4381,6 +4381,14 @@
 		return T_sprintf("LibXML error %s at line %d (column %d): %s",
 				$error->code, $error->line, $error->column,
 				$error->message);
+	}
+
+	function last_login_date() {
+		if (defined('LAST_LOGIN_PRIVACY') && LAST_LOGIN_PRIVACY) {
+			return "DATE_FORMAT(NOW(), '%Y-%m-01')";
+		} else {
+			return "NOW()";
+		}
 	}
 
 ?>

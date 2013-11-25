@@ -85,6 +85,12 @@
 	// If set to true, users won't be able to set application language
 	// and settings profile.
 
+	define('LAST_LOGIN_PRIVACY', false);
+	// Wether the exact login date should be logged
+	// or just the month in which the last login happened.
+	// This can preserve some privacy of the user, as last logins
+	// might not anymore directly be linkable to access logs.
+
 	// *********************
 	// *** Feed settings ***
 	// *********************

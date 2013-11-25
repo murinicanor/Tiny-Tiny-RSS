@@ -29,7 +29,7 @@ class Auth_Base {
 
 				$query = "INSERT INTO ttrss_users
 						(login,access_level,last_login,created,pwd_hash,salt)
-						VALUES ('$login', 0, null, NOW(), '$pwd_hash','$salt')";
+						VALUES ('$login', 0, null, ".last_login_date().", '$pwd_hash','$salt')";
 
 				$this->dbh->query($query);
 
